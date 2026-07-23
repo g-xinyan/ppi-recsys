@@ -10,9 +10,9 @@
 
 ### 项目简介
 
-本项目是四川大学统计学（数据科学与大数据技术方向）2022级本科毕业论文的研究代码与论文全文。
+本项目研究 **预测驱动推断（Prediction-Powered Inference, PPI）** 在推荐系统召回评估中的应用。PPI 是一种新兴的统计推断框架，通过小规模标注数据对大规模未标注数据上的预测结果进行偏差校正，从而平衡统计可靠性与推断效率。
 
-研究围绕 **预测驱动推断（Prediction-Powered Inference, PPI）** 在推荐系统召回评估中的应用展开。PPI 是一种新兴的统计推断框架，通过小规模标注数据对大规模未标注数据上的预测结果进行偏差校正，从而平衡统计可靠性与推断效率。
+实验基于 [Kaggle Otto Multi-Behavior Recommendation Dataset](https://www.kaggle.com/competitions/otto-recommender-system/data)，完整实现了从数据处理、召回策略、PPI 评估到分布漂移校正的全流程。
 
 ### 主要工作
 
@@ -28,12 +28,6 @@
 ppi-recsys/
 ├── README.md                 # 项目说明
 ├── requirements.txt          # Python 依赖
-├── thesis/
-│   ├── thesis.pdf            # 毕业论文全文 (中文)
-│   └── latex/                # LaTeX 源码
-│       ├── main.tex
-│       ├── scuthesis.sty
-│       └── images/
 ├── src/                      # 核心代码
 │   ├── config.py             # 配置参数
 │   ├── ppi.py                # PPI 核心算法
@@ -43,16 +37,14 @@ ppi-recsys/
 │   ├── model.py              # 双塔模型 (PyTorch)
 │   └── evaluation.py         # 评估函数
 ├── experiments/              # 实验脚本
-│   ├── exp1_strategy_comparison.py
-│   ├── exp2_session_length.py
-│   ├── exp3_time_window.py
-│   ├── exp4_ppi_vs_classical.py
-│   ├── exp5_ensemble_ppi.py
-│   ├── exp6_cold_start.py
-│   ├── exp7_distribution_shift.py
-│   └── exp8_weighted_ppi.py
+│   ├── exp1_strategy_comparison.py   # 召回策略对比
+│   ├── exp4_ppi_vs_classical.py      # PPI vs Classical
+│   ├── exp5_ensemble_ppi.py          # 集成学习 PPI
+│   ├── exp6_cold_start.py            # 冷启动分析
+│   ├── exp7_distribution_shift.py    # 分布漂移校正
+│   └── exp8_weighted_ppi.py          # 加权 PPI
 ├── notebooks/
-│   └── otto-interval.ipynb   # Kaggle 原始 notebook
+│   └── otto-interval.ipynb   # Kaggle 完整 notebook
 ├── figures/                  # 实验图表输出
 └── output/                   # 运行结果输出
 ```
@@ -75,20 +67,8 @@ pip install -r requirements.txt
 # 运行单个实验
 python experiments/exp1_strategy_comparison.py
 
-# 或使用 Jupyter Notebook
+# 或使用 Jupyter Notebook（完整实验流程）
 jupyter notebook notebooks/otto-interval.ipynb
-```
-
-### 引用
-
-```bibtex
-@thesis{guo2026ppi,
-  title={预测驱动推断在推荐系统中的应用研究},
-  author={郭芯妍},
-  school={四川大学数学学院},
-  year={2026},
-  advisor={周杰}
-}
 ```
 
 ---
@@ -97,13 +77,13 @@ jupyter notebook notebooks/otto-interval.ipynb
 
 ### Overview
 
-This repository contains the research code and full text of a bachelor's thesis from Sichuan University, focusing on **Prediction-Powered Inference (PPI)** applied to recall evaluation in recommendation systems.
+This repository implements **Prediction-Powered Inference (PPI)** applied to recall evaluation in recommendation systems, based on the Kaggle Otto Multi-Behavior Recommendation Dataset.
 
 PPI is a statistical inference framework that uses a small amount of labeled data to correct systematic biases in predictions made on large-scale unlabeled data, balancing statistical reliability with inference efficiency.
 
 ### Key Contributions
 
-- Applied PPI to recall strategy evaluation on the Otto recommendation dataset, constructing confidence intervals to quantify estimation uncertainty
+- Applied PPI to recall strategy evaluation on the Otto dataset, constructing confidence intervals to quantify estimation uncertainty
 - Analyzed key factors affecting PPI performance from three dimensions: data characteristics, model structure, and application scenarios
 - Proposed an ensemble PPI framework (Bagging-PPI, Stacking-PPI, Cross-PPI) to reduce single-predictor bias risk
 - Developed correction methods for covariate shift, label shift, and temporal drift
@@ -118,18 +98,6 @@ This project uses the [Kaggle Otto Multi-Behavior Recommendation Dataset](https:
 ```bash
 pip install -r requirements.txt
 python experiments/exp1_strategy_comparison.py
-```
-
-### Citation
-
-```bibtex
-@thesis{guo2026ppi,
-  title={Prediction-Powered Inference for Recommendation Systems},
-  author={Xinyan Guo},
-  school={School of Mathematics, Sichuan University},
-  year={2026},
-  advisor={Jie Zhou}
-}
 ```
 
 ### License
