@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Data files (too large for GitHub)
+*.csv
+*.jsonl
+*.json
+*.parquet
+*.pkl
+*.pickle
+
+# Model weights
+*.pt
+*.pth
+*.h5
+*.ckpt
+
+# Output
+output/*
+!output/.gitkeep
+figures/*
+!figures/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kaggle
+kaggle.json
+
+# Zip files
+*.zip
+
+# Signature images (private)
+*签名*.png
